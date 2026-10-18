@@ -1,0 +1,131 @@
+{
+  "describes": [
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Close navigation menu",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Toggle navigation",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Platform",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Solutions",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Resources",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Open Source",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Enterprise",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Search or jump to, type / to search",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "INPUT",
+      "id": "not-found-search",
+      "name": "q",
+      "type": "text",
+      "label": "Find code, projects, and people on GitHub:",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "submit",
+      "label": "Search",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Manage cookies",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Do not share my personal information",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": "_R_ad_-button",
+      "name": null,
+      "type": null,
+      "label": "English - Select language",
+      "value": null,
+      "options": null
+    },
+    {
+      "tag": "BUTTON",
+      "id": null,
+      "name": null,
+      "type": "button",
+      "label": "Dismiss error",
+      "value": null,
+      "options": null
+    }
+  ],
+  "bodyText": "Skip to content\nNavigation Menu\nPlatform\nSolutions\nResources\nOpen Source\nEnterprise\nPricing\nSearch\n/\nSign in\nSign up\nFind code, projects, and people on GitHub:\nSearch\nContact Support — GitHub Status — @githubstatus\nSite-wide Links\nTHE DEVELOPER NEWSLETTER\n\nGet tips, technical guides, and best practices. Twice a month. Right in your inbox.\n\nSubscribe\nPLATFORM\nFeatures\nEnterprise\nCopilot\nAI\nSecurity\nPricing\nTeam\nResources\nRoadmap\nCompare GitHub\nECOSYSTEM\nDeveloper API\nPartners\nEducation\nGitHub CLI\nGitHub Desktop\nGitHub Mobile\nGitHub Marketplace\nMCP Registry\nSUPPORT\nDocs\nCommunity Forum\nProfessional Services\nPremium Support\nSkills\nStatus\nContact GitHub\nWhat is Git?\nSitemap\nCOMPANY\nAbout\nWhy GitHub\nCustomer Stories\nBlog\nThe ReadME Project\nCareers\nInclusion\nSocial Impact\nShop\n© 2026 GITHUB, INC"
+}
