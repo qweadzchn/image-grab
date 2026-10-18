@@ -22,22 +22,24 @@ const PAGES_URL = process.env.PAGES_URL || 'https://qweadzchn.github.io/image-gr
 
 fs.mkdirSync(QA, { recursive: true });
 
-const browser = await chromium.launch({
+const context = await chromium.launchPersistentContext(path.join(ROOT, 'tmp', 'shots-profile'), {
   executablePath: CHROME,
   headless: true,
-  args: ['--no-first-run', '--no-proxy-server', '--disable-features=Translate', '--hide-scrollbars'],
+  viewport: { width: 1440, height: 980 },
+  deviceScaleFactor: 1.5,
+  args: ['--no-first-run', '--disable-features=Translate', '--hide-scrollbars'],
 });
 
 try {
-  // 1. GitHub 仓库页（含 README、文件列表、Pages 状态）
-  const repo = await browser.newPage({ viewport: { width: 1440, height: 980 }, deviceScaleFactor: 1.5 });
+  // 1. GitHub 仓库页（README、文件列表、About 等）
+  const repo = await context.newPage();
   await repo.goto(REPO_URL, { waitUntil: 'domcontentloaded', timeout: 60000 });
-  await repo.waitForTimeout(4000);
+  await repo.waitForTimeout(4500);
   await repo.screenshot({ path: path.join(QA, '04-github-repo.png') });
   console.log('[shots] repo:', await repo.title());
 
   // 2. GitHub Pages 线上官网
-  const pages = await browser.newPage({ viewport: { width: 1440, height: 980 }, deviceScaleFactor: 1.5 });
+  const pages = await context.newPage();
   const response = await pages.goto(PAGES_URL, { waitUntil: 'networkidle', timeout: 90000 });
   console.log('[shots] pages status:', response?.status());
   await pages.waitForTimeout(2000);
@@ -62,5 +64,5 @@ try {
 } catch (error) {
   console.error('[shots] 失败：', String(error).slice(0, 400));
 } finally {
-  await browser.close();
+  await context.close();
 }
