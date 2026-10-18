@@ -38,6 +38,17 @@ try {
   await repo.screenshot({ path: path.join(QA, '04-github-repo.png') });
   console.log('[shots] repo:', await repo.title());
 
+  // 1b. 同页向下滚动，截 README 正文
+  await repo.waitForSelector('#readme', { timeout: 30000 }).catch(() => {});
+  await repo.evaluate(() => {
+    const readme = document.getElementById('readme');
+    const target = readme ? readme.getBoundingClientRect().top + window.scrollY - 120 : 1200;
+    window.scrollTo(0, target);
+  });
+  await repo.waitForTimeout(1600);
+  await repo.screenshot({ path: path.join(QA, '04-github-readme.png') });
+  console.log('[shots] readme-shot scrollY:', await repo.evaluate(() => window.scrollY));
+
   // 2. GitHub Pages 线上官网
   const pages = await context.newPage();
   const response = await pages.goto(PAGES_URL, { waitUntil: 'networkidle', timeout: 90000 });

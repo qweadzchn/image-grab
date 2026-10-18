@@ -25,7 +25,12 @@ Manifest V3 扩展负责扫图与下载，`docs/` 是纯静态官网，仓库推
 
 ## 04：项目推送到 GitHub 上的截图
 
-对应文件：`qa/04-github-repo.png`（仓库首页，含 README、目录结构、提交记录）
+对应文件：
+
+| 文件 | 内容 |
+| --- | --- |
+| `qa/04-github-repo.png` | 仓库首页（文件列表、提交记录、main 分支） |
+| `qa/04-github-readme.png` | README 渲染效果（官网地址、功能表、目录结构） |
 
 仓库：<https://github.com/qweadzchn/image-grab>
 
