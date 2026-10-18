@@ -1,0 +1,56 @@
+{
+  "steps": [
+    {
+      "name": "browser-version",
+      "version": "136.0.7103.113"
+    },
+    {
+      "name": "download-behavior",
+      "ok": true,
+      "dir": "E:\\其他\\企业实训\\image-grab\\qa\\downloads"
+    },
+    {
+      "name": "button-injected",
+      "text": "获取图片"
+    },
+    {
+      "name": "gallery-loaded",
+      "cardCount": 12,
+      "meta": "淘宝 / 天猫 · 润泽保湿面霜 50g 修护屏障 补水库 - 演示商品详情页 · 共 12 张（12 个候选，已过滤小图）"
+    },
+    {
+      "name": "select-all",
+      "text": "已选 12 张"
+    },
+    {
+      "name": "download-finished",
+      "text": "完成：成功 0 张，失败 12 张。失败多半是图片防盗链，可稍后重试。"
+    },
+    {
+      "name": "downloaded",
+      "count": 0,
+      "sample": []
+    },
+    {
+      "name": "png-signature-ok",
+      "ok": false
+    },
+    {
+      "name": "console-errors",
+      "consoleErrors": []
+    },
+    {
+      "name": "site-desktop",
+      "overflow": 0
+    },
+    {
+      "name": "site-mobile",
+      "overflow": 0
+    },
+    {
+      "name": "site-320",
+      "overflow": 0
+    }
+  ],
+  "errors": []
+}

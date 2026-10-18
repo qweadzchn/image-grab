@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>润泽保湿面霜 50g 修护屏障 补水库 - 演示商品详情页</title>
+    <link rel="icon" href="/docs/assets/favicon.svg" type="image/svg+xml" />
+    <!--
+      说明：这是「图提取 ImageGrab」的本地演示商品详情页，只用于演示与截图。
+      通过 hosts 映射，本地以 http://item.taobao.com:4180/item.htm?id=... 打开，
+      这样 content.js 会像在真实淘宝详情页一样注入「获取图片」按钮。
+      页面里的图片全部是 demo/samples 下的示例图。
+    -->
+    <style>
+      :root {
+        --brand: #ff5000;
+        --ink: #1f2329;
+        --ink-2: #4b5563;
+        --muted: #8b949e;
+        --line: #eef0f3;
+        --bg: #f4f5f7;
+        --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font);
+        font-size: 14px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; text-decoration: none; }
+
+      /* 顶部通栏 */
+      .topbar {
+        background: #fff;
+        border-bottom: 1px solid var(--line);
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+      .topbar .wrap { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; }
+      .topbar a:hover { color: var(--brand); }
+
+      .wrap { width: min(1200px, 100% - 32px); margin: 0 auto; }
+
+      /* 搜索头 */
+      .header { background: #fff; padding: 18px 0; }
+      .header .wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; color: var(--brand); }
+      .logo i {
+        display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
+        background: linear-gradient(135deg, #ff7a45, var(--brand)); color: #fff; font-style: normal; font-size: 16px;
+      }
+      .search { flex: 1 1 420px; display: flex; min-width: 260px; }
+      .search input {
+        flex: 1; height: 40px; padding: 0 14px; border: 2px solid var(--brand); border-right: 0;
+        border-radius: 999px 0 0 999px; font-family: inherit; font-size: 13.5px; outline: none; background: #fff;
+      }
+      .search button {
+        height: 40px; padding: 0 22px; border: 0; border-radius: 0 999px 999px 0; cursor: pointer;
+        background: linear-gradient(135deg, #ff7a45, var(--brand)); color: #fff; font-weight: 700; font-family: inherit;
+      }
+      .cart { font-size: 13.5px; color: var(--ink-2); white-space: nowrap; }
+
+      /* 面包屑 */
+      .crumb { padding: 12px 0; font-size: 12.5px; color: var(--muted); }
+      .crumb span { margin: 0 6px; }
+
+      /* 主信息区 */
+      .product {
+        display: grid;
+        grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+        gap: 32px;
+        padding: 24px;
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+      }
+      .gallery { min-width: 0; }
+      .main-img {
+        position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden;
+        background: linear-gradient(160deg, #eef2fb, #e2e8f6); border: 1px solid var(--line);
+      }
+      .main-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .tag {
+        position: absolute; left: 12px; top: 12px; padding: 4px 10px; border-radius: 999px;
+        background: rgba(255, 80, 0, 0.92); color: #fff; font-size: 11px; font-weight: 700;
+      }
+      .thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 12px; }
+      .thumbs button {
+        padding: 0; border: 2px solid transparent; border-radius: 10px; overflow: hidden;
+        background: #fff; cursor: pointer; line-height: 0;
+      }
+      .thumbs button:first-child { border-color: var(--brand); }
+      .thumbs img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+
+      .info { min-width: 0; }
+      .info h1 { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.45; }
+      .subtitle { margin: 8px 0 0; color: var(--muted); font-size: 13px; }
+      .price-box {
+        margin-top: 16px; padding: 16px 18px; border-radius: 12px;
+        background: linear-gradient(120deg, #fff5f0, #fff9f5); border: 1px solid #ffe3d5;
+      }
+      .price-row { display: flex; align-items: baseline; gap: 10px; }
+      .price-row .label { color: var(--muted); font-size: 12.5px; }
+      .price { font-size: 30px; font-weight: 800; color: var(--brand); font-variant-numeric: tabular-nums; }
+      .price small { font-size: 15px; font-weight: 700; margin-right: 2px; }
+      .price .origin { font-size: 13px; color: var(--muted); text-decoration: line-through; font-weight: 400; }
+      .promo { margin-top: 10px; font-size: 12.5px; color: #b45309; }
+      .promo b { color: #dc2626; }
+
+      .row { display: flex; gap: 14px; margin-top: 18px; font-size: 13px; }
+      .row .key { flex: none; width: 56px; color: var(--muted); padding-top: 3px; }
+      .row .val { color: var(--ink-2); }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+      .chips span {
+        padding: 5px 14px; border-radius: 8px; border: 1px solid var(--line); background: #fff;
+        font-size: 12.5px; cursor: pointer;
+      }
+      .chips span.on { border-color: var(--brand); color: var(--brand); background: #fff7f2; }
+
+      .buy { display: flex; gap: 12px; margin-top: 26px; }
+      .buy button {
+        flex: 1; height: 48px; border-radius: 10px; border: 1px solid var(--brand); font-family: inherit;
+        font-size: 15px; font-weight: 700; cursor: pointer;
+      }
+      .buy .ghost { background: #fff; color: var(--brand); }
+      .buy .solid { background: linear-gradient(135deg, #ff7a45, var(--brand)); color: #fff; border-color: transparent; }
+
+      .service { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 18px; font-size: 12.5px; color: var(--muted); }
+      .service i { color: #16a34a; font-style: normal; margin-right: 4px; }
+
+      /* 详情长图 */
+      .detail { margin-top: 22px; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05); }
+      .detail__head {
+        display: flex; gap: 26px; padding: 0 24px; border-bottom: 1px solid var(--line);
+        font-size: 14px; color: var(--muted);
+      }
+      .detail__head b { padding: 16px 0; color: var(--ink); border-bottom: 2px solid var(--brand); font-weight: 600; }
+      .detail__head span { padding: 16px 0; }
+      .detail__body { padding: 24px; display: grid; gap: 14px; }
+      .detail__body img { width: 100%; border-radius: 10px; display: block; }
+      .detail__text { color: var(--ink-2); font-size: 13.5px; line-height: 1.9; }
+      .detail__text h3 { margin: 6px 0 4px; font-size: 15px; }
+
+      .footer { margin: 28px 0 40px; text-align: center; color: var(--muted); font-size: 12px; }
+
+      @media (max-width: 900px) {
+        .product { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 16px; }
+        .info h1 { font-size: 17px; }
+        .price { font-size: 26px; }
+        .detail__body { padding: 14px; }
+        .detail__head { gap: 18px; padding: 0 14px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="wrap">
+        <div>中国大陆 <span>|</span> 亲，请登录 <span>|</span> 免费注册</div>
+        <div>我的订单 <span>|</span> 我的淘宝 <span>|</span> 卖家中心 <span>|</span> 联系客服</div>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="wrap">
+        <div class="logo"><i>淘</i>淘 宝 商 城</div>
+        <div class="search">
+          <input type="search" value="润泽保湿面霜 50g" aria-label="搜索商品" />
+          <button type="button">搜索</button>
+        </div>
+        <div class="cart">购物车（3）</div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <div class="crumb">首页<span>/</span>美妆护肤<span>/</span>面霜<span>/</span>润泽保湿面霜 50g</div>
+
+      <section class="product">
+        <div class="gallery">
+          <div class="main-img">
+            <span class="tag">官方旗舰店</span>
+            <img id="J_ImgBooth" src="/demo/samples/01.png" alt="润泽保湿面霜 50g 主图" width="900" height="900" />
+          </div>
+          <div class="thumbs" role="list">
+            <button type="button" role="listitem"><img src="/demo/samples/02.png" alt="细节图 1" /></button>
+            <button type="button" role="listitem"><img src="/demo/samples/03.png" alt="细节图 2" /></button>
+            <button type="button" role="listitem"><img src="/demo/samples/06.png" alt="细节图 3" /></button>
+            <button type="button" role="listitem"><img src="/demo/samples/07.png" alt="细节图 4" /></button>
+            <button type="button" role="listitem"><img src="/demo/samples/11.png" alt="细节图 5" /></button>
+          </div>
+        </div>
+
+        <div class="info">
+          <h1>润泽保湿面霜 50g 修护皮肤屏障 补水锁水 敏感肌可用</h1>
+          <p class="subtitle">神经酰胺 + 角鲨烷配方 · 秋冬换季必备 · 官方旗舰店正品保障</p>
+
+          <div class="price-box">
+            <div class="price-row">
+              <span class="label">¥</span>
+              <span class="price tm-price"><small>¥</small>168.00</span>
+              <span class="origin">¥239.00</span>
+            </div>
+            <div class="promo">限时活动 <b>满 199 减 30</b> · 前 500 名赠同系列小样 5ml</div>
+          </div>
+
+          <div class="row">
+            <div class="key">规格</div>
+            <div class="val chips">
+              <span class="on">50g 正装</span>
+              <span>50g 双支装</span>
+              <span>15g 旅行装</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="key">数量</div>
+            <div class="val chips"><span>1</span><span>2</span><span>3</span></div>
+          </div>
+          <div class="row">
+            <div class="key">发货</div>
+            <div class="val">上海 · 48 小时内发货 · 顺丰包邮</div>
+          </div>
+
+          <div class="buy">
+            <button type="button" class="ghost">加入购物车</button>
+            <button type="button" class="solid">立即购买</button>
+          </div>
+
+          <div class="service">
+            <span><i>✓</i>7 天无理由</span>
+            <span><i>✓</i>正品保障</span>
+            <span><i>✓</i>极速退款</span>
+            <span><i>✓</i>顺丰包邮</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="detail">
+        <div class="detail__head">
+          <b>商品详情</b>
+          <span>规格参数</span>
+          <span>用户评价（2.3 万）</span>
+          <span>售后保障</span>
+        </div>
+        <div class="detail__body">
+          <div class="detail__text">
+            <h3>为什么秋冬一定要换面霜</h3>
+            <p>
+              气温下降后皮脂分泌减少，角质层含水量快速流失，只靠化妆水很难锁住水分。
+              润泽保湿面霜用神经酰胺补上屏障缺口，再用角鲨烷把水分封在皮肤里，质地不厚重、上脸不搓泥。
+            </p>
+          </div>
+          <img src="/demo/samples/04.png" alt="面霜质地图" />
+          <div class="detail__text">
+            <h3>成分与肤感</h3>
+            <p>
+              神经酰胺 NP 3% + 角鲨烷 5% + 透明质酸钠，无香精无酒精，敏感肌可用。
+              乳霜质地，推开即融，早晚都能用，妆前使用也不会和底妆打架。
+            </p>
+          </div>
+          <img src="/demo/samples/05.png" alt="产品细节长图" />
+          <img src="/demo/samples/08.png" alt="使用步骤图" />
+          <div class="detail__text">
+            <h3>使用方法</h3>
+            <p>洁面 → 化妆水 → 精华 → 取黄豆大小面霜，在掌心搓热后按压上脸，重点照顾两颊与法令纹区域。</p>
+          </div>
+          <img src="/demo/samples/09.png" alt="规格说明图" />
+          <img src="/demo/samples/10.png" alt="礼盒包装图" />
+          <img src="/demo/samples/12.png" alt="品牌故事图" />
+
+          <!-- 页面上的小装饰图：用来验证插件会过滤掉图标类小图 -->
+          <img src="/demo/samples/01.png" alt="" width="24" height="24" style="width: 24px; height: 24px; opacity: 0.001; position: absolute; left: -9999px" />
+        </div>
+      </section>
+
+      <p class="footer">演示商品详情页 · 图片与文案均为示例，仅用于图提取 ImageGrab 的功能演示</p>
+    </div>
+  </body>
+</html>
+
