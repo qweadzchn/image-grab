@@ -124,6 +124,14 @@ try {
 
   await gallery.screenshot({ path: path.join(QA, '03-plugin-gallery.png') });
 
+  // 手机视口截图放在下载之前，保证卡片是「待下载」状态
+  const desktopViewport = gallery.viewportSize();
+  await gallery.setViewportSize({ width: 390, height: 844 });
+  await gallery.waitForTimeout(700);
+  await gallery.screenshot({ path: path.join(QA, '03-plugin-gallery-mobile.png') });
+  await gallery.setViewportSize(desktopViewport);
+  await gallery.waitForTimeout(400);
+
   await gallery.locator('#btn-select-all').click();
   log('select-all', { text: (await gallery.locator('#selected-count').innerText()).trim() });
 
@@ -152,10 +160,6 @@ try {
 
   await gallery.waitForTimeout(600);
   await gallery.screenshot({ path: path.join(QA, '03-plugin-gallery-done.png') });
-
-  await gallery.setViewportSize({ width: 390, height: 844 });
-  await gallery.waitForTimeout(700);
-  await gallery.screenshot({ path: path.join(QA, '03-plugin-gallery-mobile.png') });
 
   log('console-errors', { consoleErrors });
 
